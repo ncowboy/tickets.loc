@@ -2,7 +2,7 @@
 
 return [
     'class' => 'app\components\ApiComponent',
-    'url' => 'https://tickets.greatcircus.ru/api/agent/',
-    'login' => 'bmgc-website',
-    'password' => '9yZHJt&@H!8u',
+    'url' => 'https://zapashny.ticketsteam.ru/api/agent/',
+    'login' => 'zapashny-website',
+    'password' => 'QNPI3KIN53pU',
 ];

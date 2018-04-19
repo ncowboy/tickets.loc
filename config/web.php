@@ -44,7 +44,6 @@ $config = [
             ],
         ],
         'db' => $db,
-        'api' => $api,
         'message' => [
            'class' => 'app\components\MessageComponent',
 	    ],
@@ -54,6 +53,13 @@ $config = [
             'rules' => [
             ],
         ],
+        'formatter' => [
+            'defaultTimeZone' => 'Europe/Moscow',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'RUR',
+            'locale' => 'ru'
+          ],
     ],
     'params' => $params,
 ];

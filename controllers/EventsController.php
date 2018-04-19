@@ -1,23 +1,27 @@
 <?php
 
 namespace app\controllers;
+use yii\data\ArrayDataProvider;
+use yii\data\Sort;
 
 use Yii;
-class TicketsController extends \yii\web\Controller
+class EventsController extends \yii\web\Controller
 {
    public function actionIndex()
     { 
-      $venues = $this->getConnection()->request('venue.list'); 
+      $events = $this->getConnection()->request(['action' => 'event.list']);
+      $eventsDataProvider = new ArrayDataProvider([
+        'allModels' => $events['result'],
+        'sort' => new Sort([
+          'attributes' => ['date']
+        ])
+      ]);
       return $this->render('index', [
-        'venues' => $venues
+        'eventsDataProvider' => $eventsDataProvider,
       ]);
     }
-    
-    
-    
     
     protected function getConnection(){
       return Yii::createObject( require '../config/api.php');
     }
-
 }

@@ -30,10 +30,10 @@ class ApiComponent extends \yii\base\Component{
      */
     public $password;
     
-    public function request($inputParams) {
+    public function request($params) {
       $time = time();
       $params['auth'] = $this->login . ':' . sha1(md5($this->password) . $time) . ':' . $time;
-      $params['action'] = $inputParams; 
+      $params['city_id'] = 3;
       
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $this->url);
@@ -47,11 +47,12 @@ class ApiComponent extends \yii\base\Component{
       
       $json = json_decode($rs, true);
       if (json_last_error() == JSON_ERROR_NONE) {
+          //var_dump($this->login);
           return($json);
       } else {
           echo 'Ошибка запроса';
           echo "<pre>";
-          var_dump($this->login);
+          var_dump($this->password);
           echo "</pre>";
       }
     }
